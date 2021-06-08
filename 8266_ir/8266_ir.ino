@@ -5,7 +5,7 @@
 #include <IRsend.h>
 #include <Blinker.h>
 
-char auth[] = "9cea7c06ec25";//这里面填写设备的密钥
+char auth[] = "";//这里面填写设备的密钥
 char ssid[] = "ASUS";//这里填写你的wifi名字
 char pswd[] = "887385206";//这里填写你的WiFi密码
 //空调开
