@@ -5,7 +5,7 @@
 #include <IRsend.h>
 #include <Blinker.h>
 
-char auth[] = "";//这里面填写设备的密钥
+char auth[] = "9cea7c06ec25";//这里面填写设备的密钥
 char ssid[] = "ASUS";//这里填写你的wifi名字
 char pswd[] = "887385206";//这里填写你的WiFi密码
 //空调开
@@ -36,6 +36,8 @@ void setup()
   BlinkerMIOT.attachQuery(miotQuery);    //语音指令与控制函数对应(查询指令)
   //红外初始化
   irsend.begin();
+  pinMode(14,OUTPUT);
+  digitalWrite(14,HIGH);
 
 }
 void loop()
@@ -54,6 +56,7 @@ void Button1_callback(const String &state)
     //发送红外指令
     Serial.println("打开空调");
     irsend.sendRaw(power_on, 199, 38);  // Send a raw data capture at 38kHz.
+    digitalWrite(14,HIGH);
     Button1.print("2楼空调开");
     airPower = true;
   }
@@ -68,6 +71,7 @@ void Button2_callback(const String &state)
   {
     Serial.println("关闭空调");
     irsend.sendRaw(power_off, 199, 38);  // Send a raw data capture at 38kHz.
+    digitalWrite(14,HIGH);
     Button2.print("2楼空调关");
     airPower = false;
   }
