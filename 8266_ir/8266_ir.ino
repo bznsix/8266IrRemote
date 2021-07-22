@@ -5,7 +5,7 @@
 #include <IRsend.h>
 #include <Blinker.h>
 
-char auth[] = "9cea7c06ec25";//这里面填写设备的密钥
+char auth[] = "";//这里面填写设备的密钥
 char ssid[] = "ASUS";//这里填写你的wifi名字
 char pswd[] = "887385206";//这里填写你的WiFi密码
 //空调开
@@ -85,6 +85,7 @@ void miotPowerState(const String & state)    //小爱语音开关控制进入函
       BlinkerMIOT.powerState("on");   //反馈小爱同学按键状态已打开
       BlinkerMIOT.print();            //发送反馈
       irsend.sendRaw(power_on, 199, 38);     //发射电视开关键的红外数据（同上）
+      digitalWrite(14,HIGH);
       delay(20); 
       airPower = true;                  //开关状态保存，用于小爱同学与BLINKER同步
     }
@@ -94,6 +95,7 @@ void miotPowerState(const String & state)    //小爱语音开关控制进入函
       BlinkerMIOT.powerState("off"); //反馈小爱同学按键状态已关闭
       BlinkerMIOT.print();           //发送反馈
       irsend.sendRaw(power_off, 199, 38);    //发射电视开关键的红外数据（同上）
+      digitalWrite(14,HIGH);
       delay(20); 
       airPower = false;                //开关状态保存，用于小爱同学与BLINKER同步
     }
